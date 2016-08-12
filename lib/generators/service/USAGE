@@ -5,4 +5,20 @@ Example:
     rails generate service Thing
 
     This will create:
-        what/will/it/create
+        class Thing
+          # default method will be 'call'
+          def call
+          end
+        end
+
+        If you specify more names as arguments to generator it will create those methods
+
+        rails generate service Thing foo bar
+
+        class Thing
+          def foo
+          end
+
+          def bar
+          end
+        end

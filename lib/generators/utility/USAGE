@@ -2,7 +2,9 @@ Description:
     Explain the generator
 
 Example:
-    rails generate service Thing
+    rails generate utility Thing
 
-    This will create:
-        what/will/it/create
+    This will create class in lib/utilities:
+    thing.rb
+        class Thing
+        end

@@ -3,6 +3,7 @@ require 'rails/generators/base'
 class ServiceGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   argument :service_name, type: :string, desc: "Add your service class name"
+  argument :fields, :type => :array, default: ['call'], :desc => "Service methods list"
 
   def   generate_layout
     unless File.directory?("#{Rails.root}/app/services")
@@ -23,12 +24,33 @@ class ServiceGenerator < Rails::Generators::Base
   private
 
   def service_class_template
-    <<-FILE
+<<-FILE
 class #{file_name.classify}
+#{service_methods.chomp}
+  #add more methods here
+end
+FILE
+  end
+
+  def service_methods
+    if fields.present?
+      methods_available = fields.map(&:underscore)
+      method_calls = ""
+      methods_available.each do |method_name|
+      method_calls.concat(
+<<-METHOD
+  def #{method_name}
+  end\n
+METHOD
+)
+      end
+      method_calls
+    else
+<<-METHOD
   def call
   end
-end
-    FILE
+METHOD
+    end
   end
 
   def service_class_test_template

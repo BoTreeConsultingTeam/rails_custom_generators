@@ -5,4 +5,9 @@ Example:
     rails generate layout Thing
 
     This will create:
-        what/will/it/create
+        - It will create an layout_name.html.erb file inside app/views/layout directory
+          For example, thing.html.erb
+        - Includes JavaScript file in assets/javascripts directory
+          For example, thing.js
+        - Includes a CSS file in assets/stylesheets directory
+          For example, thing.css

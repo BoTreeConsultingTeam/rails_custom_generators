@@ -7,8 +7,7 @@ class ServiceGenerator < Rails::Generators::Base
 
   def   generate_layout
     unless File.directory?("#{Rails.root}/app/services")
-        # directory "/app", 'service'
-      directory "#{Rails.root}/app/", "#{Rails.root}/app/services", recursive: false
+      empty_directory "#{Rails.root}/app/services"
     end
     create_file "app/services/#{file_name}.rb", service_class_template
 
@@ -40,6 +39,7 @@ FILE
       method_calls.concat(
 <<-METHOD
   def #{method_name}
+    # write your code here
   end\n
 METHOD
 )
@@ -48,6 +48,7 @@ METHOD
     else
 <<-METHOD
   def call
+    # write your code here
   end
 METHOD
     end

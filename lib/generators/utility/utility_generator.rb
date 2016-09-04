@@ -6,8 +6,8 @@ class UtilityGenerator < Rails::Generators::Base
 
   def generate_layout
     unless File.directory?("#{Rails.root}/lib/utilities")
-        # directory "/app", 'service'
-      directory "#{Rails.root}/lib/", "#{Rails.root}/lib/utilities", recursive: false
+      # directory "/app", 'service'
+      empty_directory "#{Rails.root}/lib/utilities"
     end
     create_file "lib/utilities/#{file_name}.rb", utility_class_template
   end
